@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Администативная панель')
-@section('description', 'Администативная панель')
-@section('description')Это - элемент типа {{Auth::user()->name}}@overwrite
+@section('description')Администативная панель@overwrite
+@section('keywords')Администативная панель@overwrite
 @section('content')
 <div class="panel panel-inverse">
 	<div class="panel-body">

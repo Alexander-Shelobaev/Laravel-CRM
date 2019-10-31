@@ -39,7 +39,7 @@ Route::group(['middleware'=>['web']], function() {
 
         Route::get('/',['uses'=>'adminController@Admin','as'=>'admin']);
 
-        Route::resource('/chat','ChatResourceController');
+        Route::resource('/chat','ChatController');
         //Route::resource('/chat',['uses'=>'ChatResourceController','as'=>'chat']);
 
         // Роут для управления пользователями

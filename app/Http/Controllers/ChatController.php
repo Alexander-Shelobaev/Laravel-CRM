@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
 use Illuminate\Http\Request;
 
 use Gate;
 use App\User;
-use App\Chat;
 use Auth;
 use DB;
 
-class ChatResourceController extends Controller
+class ChatController extends Controller
 {
     /**
-     * Display a listing of the resource. / Отображение списка ресурсов.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,18 +25,16 @@ class ChatResourceController extends Controller
             return redirect('/admin/user-management/roles')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
         }
 
-        
         // массив из id, имени пользователя и количества непрочитанных сообщений
         // непрочитанные сообщения подсчитываются для текущего авторизированного пользователя
-        
         $author_id = Auth::user()->id;
         $users = User::all();
         
         $arr_users = array();
         foreach ($users as $key => $value) {
-        	$arr_users[] = ['id'=>$value->id,'name'=>$value->name,'avatar'=>$value->avatar,'count'=>count(User::find($author_id)->chatMessages
-        																								->where('author_id','=',$value->id)
-        																								->where('view','=',false))];
+            $arr_users[] = ['id'=>$value->id,'name'=>$value->name,'avatar'=>$value->avatar,'count'=>count(User::find($author_id)->chatMessages
+                                                                                                        ->where('author_id','=',$value->id)
+                                                                                                        ->where('view','=',false))];
         }
 
         return view('admin.chat.index', [
@@ -51,7 +49,7 @@ class ChatResourceController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -60,27 +58,40 @@ class ChatResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Chat $chat,Request $request)
     {
-        //
+        $validator = $request->validate([
+            'message'=>'required|max:255',    
+            'recipient_id'=>'required',    
+        ]);
+//dd($request);
+        $chat->text = $request['message'];
+        $chat->author_id = Auth::user()->id;
+        $chat->recipient_id = $request['recipient_id'];
+        $chat->view = false;
+        
+        $chat->save();
+
+        return redirect()->route('chat.show',$request['recipient_id'])->with('status','Запись обновлена');
     }
 
     /**
      * Display the specified resource.
      *
+     * @param  \App\Chat  $chat
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-    	$author_id = Auth::user()->id;
+        $author_id = Auth::user()->id;
         $users = User::all();
         
         $arr_users = array();
         foreach ($users as $key => $value) {
-        	$arr_users[] = ['id'=>$value->id,'name'=>$value->name,'count'=>count(User::find($author_id)->chatMessages
-        																								->where('author_id','=',$value->id)
-        																								->where('view','=',false))];
+            $arr_users[] = ['id'=>$value->id,'name'=>$value->name,'avatar'=>$value->avatar,'count'=>count(User::find($author_id)->chatMessages
+                                                                                                        ->where('author_id','=',$value->id)
+                                                                                                        ->where('view','=',false))];
         }
 
 
@@ -91,11 +102,10 @@ class ChatResourceController extends Controller
                         ->where('recipient_id', '=', $author_id)
                         ->get();
 
-        //$not_view_messages = 0;
         foreach ($messages as $key => $value) {
             if ($author_id == $value->recipient_id and $value->view == false) {
-            	//$not_view_messages++;
-            	$value->view = true;$value->save();
+                $value->view = true;
+                $value->save();
             }
         }       
         
@@ -110,10 +120,10 @@ class ChatResourceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Chat $chat)
     {
         //
     }
@@ -122,21 +132,21 @@ class ChatResourceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Chat $chat)
     {
-        //
+        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Chat $chat)
     {
         //
     }

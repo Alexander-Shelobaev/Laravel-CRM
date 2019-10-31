@@ -26,13 +26,37 @@
 							<div data-scrollbar="true" data-height="100%">
 								<!-- begin wrapper -->
 								<div class="wrapper p-0">
+									<div class="chat-search-form">
+										<form class="navbar-form">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Поиск контактов и групп">
+												<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+											</div>
+										</form>
+									</div>	
+
+									<div class="chat-groop-button">
+										<button type="button" class="btn btn-success"><i class="fas fa-edit"></i> Создать группу</button>
+									</div>
+									
 									<div class="nav-title"><b>Контакты</b></div>
-									<ul class="nav nav-inbox"><!--<li><a href="email_inbox.html"><img src="../assets/img/user/user-14.jpg" alt="" /> Alex </a></li>
+									<ul class="nav nav-inbox">
+
+										<!--<li><a href="email_inbox.html"><img src="../assets/img/user/user-14.jpg" alt="" /> Alex </a></li>
 										<li><a href="email_inbox.html"><img src="../assets/img/user/user-15.jpg" alt="" /> Alex </a></li> -->
+
 										@foreach ($arr_users as $value)
 
 											@if(Auth::user()->id != $value['id'])
-												<li @if($value['id'] == $recipient_id) class="active" @endif><a href="{{ route('chat.show',[$value['id']]) }}"> {{ $value['name'] }} <span class="badge pull-right">{{ $value['count'] }}</span></a></li>
+												<li>
+													<a href="{{ route('chat.show',[$value['id']]) }}">
+														<img src="{{ asset('/assets/img/user/'.$value['avatar']) }}" class="img-rounded height-30 rounded-corner mr-2"> 
+														{{ $value['name'] }} 
+														<span class="badge pull-right">
+															{{ $value['count'] }}
+														</span>
+													</a>
+												</li>
 											@endif
 											
 										@endforeach
@@ -95,7 +119,7 @@
 							@foreach ($messages as $value)
 								
 							<div class="@if(Auth::user()->id == $value->author_id) right @else left @endif">
-								<span class="date-time">{{ $value->created_at }}</span>
+								<span class="date-time">{{ $value->created_at }}@if($value->view == 0) Непрочитано@endif</span>
 								<a href="javascript:;" class="name">{{ $value->author->name }}</a>
 								<a href="javascript:;" class="image"><img alt="" src="{{ asset('/assets/img/user/'.$value->author->avatar) }}" /></a>
 								@if(Auth::user()->id == $value->author_id)
@@ -127,12 +151,15 @@
 				<!-- begin wrapper -->
 				<div class="wrapper bg-silver-lighter clearfix">
 					
-						<form name="send_message_form" data-id="message-form">
+						<form action="{{ route('chat.store') }}" method="post" name="send_message_form" data-id="message-form">
 							<div class="input-group">
-								<input type="text" class="form-control" name="message" placeholder="Введите сообщение.">
+								<input type="text" class="form-control" name="message" placeholder="Введите сообщение." value="@if(old('message')){{ old('message') }}@else{{old('message') ?? ''}}@endif">
 								<span class="input-group-append">
 									<button class="btn btn-primary" type="button"><i class="fa fa-paperclip"></i></button>
-									<button class="btn btn-primary" type="button">Отправить</i></button>
+									
+									<input type="hidden" name="recipient_id" value="{{ $recipient_id }}">
+									{{ csrf_field() }} 
+									<button type="submit" class="btn btn-primary" type="button">Отправить</i></button>
 								</span>
 							</div>
 						</form>
