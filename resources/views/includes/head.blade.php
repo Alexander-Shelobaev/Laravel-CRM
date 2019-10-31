@@ -1,7 +1,8 @@
 <meta charset="utf-8" />
 <title>Проект | @yield('title')</title>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-<meta content="" name="description" />
+<meta content="@yield('description')" name="description" />
+<meta content="@yield('description')" name="description" />
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/favicon/favicon-32x32.png')}}">
 <meta content="A. S. Shelobaev" name="author" />
 
