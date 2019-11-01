@@ -4,7 +4,7 @@
 @section('description', 'Большинство поисковых серверов отображают содержимое поля description при выводе результатов поиска. Если этого тега нет на странице, то поисковый движок просто перечислит первые встречающиеся слова на странице, которые, как правило, оказываются не очень-то и в тему.')
 
 @section('content')	
-		
+
 <!-- begin #home -->
 <div id="home" class="content has-bg home">
 	<div class="content-bg">
@@ -27,28 +27,28 @@
 <div id="about" class="content" data-scrollview="true">
 	<div class="container" data-animation="true" data-animation-type="fadeInDown">
 
-<h2 class="content-title">О нас</h2>
-<p>Основными направлениями деятельности «Software Provider» Ltd являются:</p>
+        <h2 class="content-title">О нас</h2>
+        <p>Основными направлениями деятельности «Software Provider» Ltd являются:</p>
 
-<ul>
-	<li>Построение e-Commerce – системы продаж и клиентского обслуживания через Интернет;</li>
-	<li>Разработка интранет (внутренних) / интернет порталов;</li>
-	<li>Автоматизация транспортных услуг – расписания, обработка технологических телеграмм, агентские системы и электронная коммерция;</li>
-	<li>Разработка, внедрение и поддержание B2B решений;</li>
-	<li>ИТ услуги – заказная разработка и интеграционные решения;</li>
-	<li>Веб разработка – заказная разработка веб-порталов, интернет магазинов и сайтов.</li>
-</ul>
+        <ul>
+           <li>Построение e-Commerce – системы продаж и клиентского обслуживания через Интернет;</li>
+           <li>Разработка интранет (внутренних) / интернет порталов;</li>
+           <li>Автоматизация транспортных услуг – расписания, обработка технологических телеграмм, агентские системы и электронная коммерция;</li>
+           <li>Разработка, внедрение и поддержание B2B решений;</li>
+           <li>ИТ услуги – заказная разработка и интеграционные решения;</li>
+           <li>Веб разработка – заказная разработка веб-порталов, интернет магазинов и сайтов.</li>
+       </ul>
 
-<p>Глубокое понимание бизнеса клиента, выявление и тщательный анализ проблем, препятствующих его развитию, позволяет предложить оптимальные варианты решения наиболее актуальных бизнес-задач и, в рамках каждого проекта, достичь максимального экономического результата для клиента.
+       <p>Глубокое понимание бизнеса клиента, выявление и тщательный анализ проблем, препятствующих его развитию, позволяет предложить оптимальные варианты решения наиболее актуальных бизнес-задач и, в рамках каждого проекта, достичь максимального экономического результата для клиента.
 
-	Эксперты «Software Provider» Ltd постоянно совершенствуют свои знания и имеют на сегодняшний день свыше 50 действующих сертификатов ведущих мировых производителей программного обеспечения. Работа каждого из них является образцом профессионализма во всех сферах деятельности и видах услуг, которые мы оказываем.
+           Эксперты «Software Provider» Ltd постоянно совершенствуют свои знания и имеют на сегодняшний день свыше 50 действующих сертификатов ведущих мировых производителей программного обеспечения. Работа каждого из них является образцом профессионализма во всех сферах деятельности и видах услуг, которые мы оказываем.
 
-«Software Provider» Ltd является надежным деловым партнером и строит взаимоотношения с клиентами на долговременной и взаимовыгодной основе. Нашими клиентами и партнерами являются крупнейшие предприятия и организации России, среди которых: ОАО Аэрофлот, Государственная корпорация Росатом, IBM и др..</p>
+       «Software Provider» Ltd является надежным деловым партнером и строит взаимоотношения с клиентами на долговременной и взаимовыгодной основе. Нашими клиентами и партнерами являются крупнейшие предприятия и организации России, среди которых: ОАО Аэрофлот, Государственная корпорация Росатом, IBM и др..</p>
 
-	</div>
+   </div>
 </div>
 <!-- end #about -->
-	
+
 <!-- begin #milestone -->
 <div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
 	<div class="content-bg">
@@ -88,7 +88,7 @@
 	</div>
 </div>
 <!-- end #milestone -->
-		
+
 
 
 
@@ -136,7 +136,7 @@
 	</div>
 </div>
 <!-- end #team -->
-		
+
 <!-- begin #quote -->
 <div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
 	<div class="content-bg">
@@ -152,7 +152,7 @@
 	</div>
 </div>
 <!-- end #quote -->
-		
+
 
 
 
@@ -200,7 +200,7 @@
 	</div>
 </div>
 <!-- end #action-box -->
-		
+
 
 
 
@@ -278,7 +278,7 @@
 						Кроме того, вся необходимая информация для руководства теперь доступна сразу одним кликом.
 						<i class="fa fa-quote-right"></i>
 					</blockquote>
-					<div class="name"> — <span class="text-theme">Шонько О.А. </span>, ООО "ВЫДИЖЕНИЕ"</div>
+					<div class="name"> — <span class="text-theme">Шонько О.А. </span>, ООО "ВЫДВИЖЕНИЕ"</div>
 				</div>
 				<!-- end item -->
 			</div>
@@ -296,8 +296,8 @@
 	<!-- end containter -->
 </div>
 <!-- end #client -->
-		
-		
+
+
 
 
 <!-- begin #work -->
@@ -310,19 +310,19 @@
 		<ul>
 			<li><a href="http://www.ibm.com/ru-ru/" target="_blank">IBM</a>&nbsp;— транснациональная корпорация со штаб-квартирой в Армонке, штат Нью-Йорк (США), один из крупнейших в мире производителей и поставщиков аппаратного и программного обеспечения, а также ИТ-сервисов и консалтинговых услуг. Лучший мировой поставщик интеграционных платформ.</li>
 			<li><a target="_blank" href="http://bpcbankingtech.com/ru">БПЦ Банковские Технологии</a> - основана в 1995 году. Архитектор, разработчик и вендор семейства продуктов SmartVista, которая предназначена для решения всех задач, связанных с управлением сетями банкоматов, тарификацией и выставлением счетов, мобильными и бесконтактными платежами, взаиморасчетами, приемом платежей в торговых точках, эмиссией карт, эквайрингом, микрофинансированием и обработкой электронных платежей.<br>
-		 </li>
-			<li><a title="РБС" target="_blank" href="http://www.rbspayment.ru/">Рунет Бизнес Системы (РБС)</a> - работает на рынке интернет-эквайринга с 2000-го года. РБС предоставляет услуги интернет-эквайринга пластиковых карт международных платежных систем с использованием современных технологий и международных стандартов электронных платежей. РБС предлагает весь необходимый функционал для банков, торгово-сервисных предприятий, реализующих товары или услуги в интернете, позволяя принимать платежи в интернет-магазинах с помощью пластиковых карт международных платежных систем.<br>
-		 </li>
-			<li><a href="http://www.dis-group.ru/" target="_blank">Data Integration Software</a>&nbsp;— авторизованный дистрибьютор корпорации&nbsp;<a href="https://www.informatica.com/" target="_blank">Informatica</a>&nbsp;в России и странах СНГ. С 2005 года компания Data Integration Software предлагает своим партнерам и заказчикам в России и СНГ лидирующую промышленную платформу для интеграции и обеспечения качества корпоративных данных, благодаря которой компании по всему миру обеспечивают доступ, интегрируют, визуализируют данные, осуществляют аудит информационных активов для повышения эффективности своего бизнеса, увеличения доходов клиентов и выполнения требований регулирующих органов.</li>
-			<li><a href="http://www.asoft.ru/" target="_blank">ASoft</a>&nbsp;— ведущий российский разработчик программного обеспечения. Поставщик ряда собственных программных продуктов (ASoft CRM, ASoft Contact Manager, ASoft Collaboration, ASoft Doc и др.).</li>
-			<li><a href="http://www.teamwox.com/ru/about" target="_blank">MetaQuotes Software Corp.</a>&nbsp;начала свою деятельность в 2000 году как разработчик программного обеспечения для финансовых рынков. На настоящее время приобрела известность, как производитель&nbsp;<a href="http://www.teamwox.com/" target="_blank">TeamWox</a>&nbsp;— лучшей российской системы автоматизации управления СМБ-бизнесом.</li>
-		</ul>
+         </li>
+         <li><a title="РБС" target="_blank" href="http://www.rbspayment.ru/">Рунет Бизнес Системы (РБС)</a> - работает на рынке интернет-эквайринга с 2000-го года. РБС предоставляет услуги интернет-эквайринга пластиковых карт международных платежных систем с использованием современных технологий и международных стандартов электронных платежей. РБС предлагает весь необходимый функционал для банков, торгово-сервисных предприятий, реализующих товары или услуги в интернете, позволяя принимать платежи в интернет-магазинах с помощью пластиковых карт международных платежных систем.<br>
+         </li>
+         <li><a href="http://www.dis-group.ru/" target="_blank">Data Integration Software</a>&nbsp;— авторизованный дистрибьютор корпорации&nbsp;<a href="https://www.informatica.com/" target="_blank">Informatica</a>&nbsp;в России и странах СНГ. С 2005 года компания Data Integration Software предлагает своим партнерам и заказчикам в России и СНГ лидирующую промышленную платформу для интеграции и обеспечения качества корпоративных данных, благодаря которой компании по всему миру обеспечивают доступ, интегрируют, визуализируют данные, осуществляют аудит информационных активов для повышения эффективности своего бизнеса, увеличения доходов клиентов и выполнения требований регулирующих органов.</li>
+         <li><a href="http://www.asoft.ru/" target="_blank">ASoft</a>&nbsp;— ведущий российский разработчик программного обеспечения. Поставщик ряда собственных программных продуктов (ASoft CRM, ASoft Contact Manager, ASoft Collaboration, ASoft Doc и др.).</li>
+         <li><a href="http://www.teamwox.com/ru/about" target="_blank">MetaQuotes Software Corp.</a>&nbsp;начала свою деятельность в 2000 году как разработчик программного обеспечения для финансовых рынков. На настоящее время приобрела известность, как производитель&nbsp;<a href="http://www.teamwox.com/" target="_blank">TeamWox</a>&nbsp;— лучшей российской системы автоматизации управления СМБ-бизнесом.</li>
+     </ul>
 
-	</div>
-	<!-- end container -->
+ </div>
+ <!-- end container -->
 </div>
 <!-- end #work -->
-		
+
 <!-- begin #client -->
 <div id="client" class="content has-bg bg-green" data-scrollview="true">
 	<!-- begin content-bg -->
@@ -430,10 +430,10 @@
 		</div>
 		<!-- end row -->
 		<div class="text-center">
-		{{ $news->fragment('news')->links() }}
-		</div>
-	</div>
-	<!-- end container -->
+          {{ $news->fragment('news')->links() }}
+      </div>
+  </div>
+  <!-- end container -->
 </div>
 <!-- end #news -->
 
@@ -501,7 +501,7 @@
 <!-- end #client -->
 
 
-		
+
 <!-- begin #contact -->
 <div id="contact" class="content bg-silver-lighter" data-scrollview="true">
 	<!-- begin container -->
@@ -514,112 +514,112 @@
 		<!-- begin row -->
 		<div class="row">
 
-<!-- begin col-6 -->
-<div class="col-md-6" data-animation="true" data-animation-type="fadeInLeft">
-<h3>Наши реквизиты</h3>
-	<table class="tableinfooter">
-		<tbody>
-		<tr>
-			<td>Полное наименование</td>
-			<td></td>
-			<td>Общество с ограниченной ответственностью «Софтваре Провайдэр»</td>
-		</tr>
-		<tr>
-			<td>Полное наименование на английском языке</td>
-			<td></td>
-			<td>«Software Provider» Ltd</td>
-		</tr>
-		<tr>
-			<td>Юридический адрес</td>
-			<td></td>
-			<td>301246, Тульская область, г. Щекино, Ясенковский проезд, д. 9</td>
-		</tr>
-		<tr>
-			<td>Адрес в интернете</td>
-			<td></td>
-			<td class="top"><a href="http://www.software-provider.ru/" target="_blank">http://www.software-provider.ru/</a></td>
-		</tr>
-		<tr>
-			<td>Электронный адрес<br>Телефон<br>Контактный телефон московского представительства</td>
-			<td></td>
-			<td><a href="mailto:support@software-provider.ru">support@software-provider.ru</a><br>+7-980-720-75-54<br>+7-917-505-14-24</td>
-		</tr>
-		<tr>
-			<td>ИНН КПП</td>
-			<td></td>
-			<td>7118503467 711801001</td>
-		</tr>
-		<tr>
-			<td>Банковские реквизиты</td>
-			<td></td>
-			<td>Московский РФ АО «Россельхозбанк»<br>
-				г. Москва БИК 044525430<br>
-				к/сч 30101810045250000430<br>
-				р/сч 40702810163290000068
-			</td>
-		</tr>
-		<tr>
-			<td>Регистрационные данные</td>
-			<td></td>
-			<td>ОГРН 1107154014373<br>ПФР 081-027-015160</td>
-		</tr>
-		</tbody>
-	</table>
+            <!-- begin col-6 -->
+            <div class="col-md-6" data-animation="true" data-animation-type="fadeInLeft">
+                <h3>Наши реквизиты</h3>
+                <table class="tableinfooter">
+                  <tbody>
+                      <tr>
+                         <td>Полное наименование</td>
+                         <td></td>
+                         <td>Общество с ограниченной ответственностью «Софтваре Провайдэр»</td>
+                     </tr>
+                     <tr>
+                         <td>Полное наименование на английском языке</td>
+                         <td></td>
+                         <td>«Software Provider» Ltd</td>
+                     </tr>
+                     <tr>
+                         <td>Юридический адрес</td>
+                         <td></td>
+                         <td>301246, Тульская область, г. Щекино, Ясенковский проезд, д. 9</td>
+                     </tr>
+                     <tr>
+                         <td>Адрес в интернете</td>
+                         <td></td>
+                         <td class="top"><a href="http://www.software-provider.ru/" target="_blank">http://www.software-provider.ru/</a></td>
+                     </tr>
+                     <tr>
+                         <td>Электронный адрес<br>Телефон<br>Контактный телефон московского представительства</td>
+                         <td></td>
+                         <td><a href="mailto:support@software-provider.ru">support@software-provider.ru</a><br>+7-980-720-75-54<br>+7-917-505-14-24</td>
+                     </tr>
+                     <tr>
+                         <td>ИНН КПП</td>
+                         <td></td>
+                         <td>7118503467 711801001</td>
+                     </tr>
+                     <tr>
+                         <td>Банковские реквизиты</td>
+                         <td></td>
+                         <td>Московский РФ АО «Россельхозбанк»<br>
+                            г. Москва БИК 044525430<br>
+                            к/сч 30101810045250000430<br>
+                            р/сч 40702810163290000068
+                        </td>
+                    </tr>
+                    <tr>
+                     <td>Регистрационные данные</td>
+                     <td></td>
+                     <td>ОГРН 1107154014373<br>ПФР 081-027-015160</td>
+                 </tr>
+             </tbody>
+         </table>
+     </div>
+     <!-- end col-6 -->
+     <!-- begin col-6 -->
+     <div class="col-md-6 form-col" data-animation="true" data-animation-type="fadeInRight">
+       <h3>Пишите нам</h3>
+       <form class="form-horizontal" action="{{ route('landingHome') }}" method="POST">
+
+          <div class="form-group">
+             <div class="col-md-9">
+                <label for="name" class="control-label">Ваше имя <span class="text-theme">*</span></label>
+                <input id="name" type="text" class="form-control" name="name" />
+            </div>
+        </div>
+
+        <div class="form-group">
+         <div class="col-md-9">
+            <label for="email" class="control-label">Ваш E-mail <span class="text-theme">*</span></label>
+            <input id="email" type="text" class="form-control" name="email" />
+        </div>
+    </div>
+
+    <div class="form-group">
+     <div class="col-md-9">
+        <label for="textarea" class="control-label">Сообщение <span class="text-theme">*</span></label>
+        <textarea id="textarea" class="form-control" rows="10" name="text"></textarea>
+    </div>
+</div>
+
+<div class="form-group">
+ <div class="col-md-9 text-left">
+    <label class="control-label"></label>
+    <button type="submit" class="btn btn-theme btn-block">Отправить сообщение</button>
+</div>
+</div>
+{{ csrf_field() }} 
+</form>
+@if (session('status'))
+<div class="alert alert-success"> {{ session('status') }} </div>
+@endif
+@if (count($errors))
+<div class="alert alert-danger"> 
+ <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+</ul>
+</div>
+@endif
 </div>
 <!-- end col-6 -->
-<!-- begin col-6 -->
-<div class="col-md-6 form-col" data-animation="true" data-animation-type="fadeInRight">
-	<h3>Пишите нам</h3>
-	<form class="form-horizontal" action="{{ route('landingHome') }}" method="POST">
 
-		<div class="form-group">
-			<div class="col-md-9">
-				<label for="name" class="control-label">Ваше имя <span class="text-theme">*</span></label>
-				<input id="name" type="text" class="form-control" name="name" />
-			</div>
-		</div>
-
-		<div class="form-group">
-			<div class="col-md-9">
-				<label for="email" class="control-label">Ваш E-mail <span class="text-theme">*</span></label>
-				<input id="email" type="text" class="form-control" name="email" />
-			</div>
-		</div>
-
-		<div class="form-group">
-			<div class="col-md-9">
-				<label for="textarea" class="control-label">Сообщение <span class="text-theme">*</span></label>
-				<textarea id="textarea" class="form-control" rows="10" name="text"></textarea>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<div class="col-md-9 text-left">
-				<label class="control-label"></label>
-				<button type="submit" class="btn btn-theme btn-block">Отправить сообщение</button>
-			</div>
-		</div>
-		{{ csrf_field() }} 
-	</form>
-	@if (session('status'))
-		<div class="alert alert-success"> {{ session('status') }} </div>
-	@endif
-	@if (count($errors))
-		<div class="alert alert-danger"> 
-			<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
 </div>
-<!-- end col-6 -->
-
-		</div>
-		<!-- end row -->
-	</div>
-	<!-- end container -->
+<!-- end row -->
+</div>
+<!-- end container -->
 </div>
 <!-- end #contact -->
 @endsection

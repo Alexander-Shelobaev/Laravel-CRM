@@ -6,9 +6,8 @@
 
 @section('title', '$news->headline')
 
-@section('content')	
+@section('content')
 <div id="" class="">
-
 	<div class="container" style="padding-top: 100px;padding-bottom: 100px;">
 			<h2>{{ $news->headline }}</h2>
 			<div style="height: 500px;  background: url({{asset('/assets-landing/img')}}/{{ $news->detailed_picture }}) 100% 50% no-repeat; background-size: cover; margin-bottom: 50px;"></div>
@@ -17,6 +16,4 @@
 			<a href="{{ route('landingHome') }}#news" class="btn btn-theme btn-sm"> На главную</a>
 	</div>
 </div>
-		
-		
-@endsection		
+@endsection

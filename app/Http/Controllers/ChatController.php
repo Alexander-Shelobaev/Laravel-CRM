@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use Illuminate\Http\Request;
-
 use Gate;
 use App\User;
 use Auth;
@@ -29,7 +28,7 @@ class ChatController extends Controller
         // непрочитанные сообщения подсчитываются для текущего авторизированного пользователя
         $author_id = Auth::user()->id;
         $users = User::all();
-        
+
         $arr_users = array();
         foreach ($users as $key => $value) {
             $arr_users[] = ['id'=>$value->id,'name'=>$value->name,'avatar'=>$value->avatar,'count'=>count(User::find($author_id)->chatMessages
@@ -49,7 +48,7 @@ class ChatController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -61,15 +60,15 @@ class ChatController extends Controller
     public function store(Chat $chat,Request $request)
     {
         $validator = $request->validate([
-            'message'=>'required|max:255',    
-            'recipient_id'=>'required',    
+            'message'=>'required|max:255',
+            'recipient_id'=>'required',
         ]);
-//dd($request);
+
         $chat->text = $request['message'];
         $chat->author_id = Auth::user()->id;
         $chat->recipient_id = $request['recipient_id'];
         $chat->view = false;
-        
+
         $chat->save();
 
         return redirect()->route('chat.show',$request['recipient_id'])->with('status','Запись обновлена');
@@ -86,7 +85,7 @@ class ChatController extends Controller
     {
         $author_id = Auth::user()->id;
         $users = User::all();
-        
+
         $arr_users = array();
         foreach ($users as $key => $value) {
             $arr_users[] = ['id'=>$value->id,'name'=>$value->name,'avatar'=>$value->avatar,'count'=>count(User::find($author_id)->chatMessages
@@ -107,8 +106,8 @@ class ChatController extends Controller
                 $value->view = true;
                 $value->save();
             }
-        }       
-        
+        }
+
 
         return view('admin.chat.show', [
             'arr_users' => $arr_users,
@@ -137,7 +136,7 @@ class ChatController extends Controller
      */
     public function update(Request $request, Chat $chat)
     {
-        
+
     }
 
     /**
