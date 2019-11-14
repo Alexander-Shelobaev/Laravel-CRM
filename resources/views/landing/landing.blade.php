@@ -446,7 +446,7 @@
 	<!-- end content-bg -->
 	<!-- begin container -->
 	<div class="container" data-animation="true" data-animation-type="fadeInUp">
-		<h2 class="content-title">Our Client Testimonials</h2>
+		<h2 class="content-title">Социальная активность</h2>
 		<!-- begin carousel -->
 		<div class="carousel testimonials slide" data-ride="carousel" id="testimonials">
 			<!-- begin carousel-inner -->
@@ -455,33 +455,36 @@
 				<div class="item active">
 					<blockquote>
 						<i class="fa fa-quote-left"></i>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra, nulla ut interdum fringilla,<br />
-						urna massa cursus lectus, eget rutrum lectus neque non ex.
+							На международном авиационном ИТ-форуме 2018 компанией<br />
+							Software Provider Ltd представлено наше решение контроля<br />
+							качества автоматизации сквозных бизнес-процессов авиапредприятия
 						<i class="fa fa-quote-right"></i>
 					</blockquote>
-					<div class="name"> — <span class="text-theme">Mark Doe</span>, Designer</div>
+					<div class="name">Международный авиационный <span class="text-theme">ИТ-форуме 2018</span></div>
 				</div>
 				<!-- end item -->
 				<!-- begin item -->
 				<div class="item">
 					<blockquote>
 						<i class="fa fa-quote-left"></i>
-						Donec cursus ligula at ante vulputate laoreet. Nulla egestas sit amet lorem non bibendum.<br />
-						Nulla eget risus velit. Pellentesque tincidunt velit vitae tincidunt finibus.
+							На евразийском авиационном форуме<br />
+							NETWORK представлен наш продукт<br />
+							Единая корзина пассажира
 						<i class="fa fa-quote-right"></i>
 					</blockquote>
-					<div class="name"> — <span class="text-theme">Joe Smith</span>, Developer</div>
+					<div class="name">Евразийский авиационный форум <span class="text-theme">NETWORK</span></div>
 				</div>
 				<!-- end item -->
 				<!-- begin item -->
 				<div class="item">
 					<blockquote>
 						<i class="fa fa-quote-left"></i>
-						Sed tincidunt quis est sed ultrices. Sed feugiat auctor ipsum, sit amet accumsan elit vestibulum<br />
-						fringilla. In sollicitudin ac ligula eget vestibulum.
+							«Software Provider» Ltd совместно с АНО РЦС<br />
+							проводят конференцию<br />
+							«Электронный инструментарий промышленной кооперации»
 						<i class="fa fa-quote-right"></i>
 					</blockquote>
-					<div class="name"> — <span class="text-theme">Linda Adams</span>, Programmer</div>
+					<div class="name">Конференция <span class="text-theme">«Электронный инструментарий промышленной кооперации»</span></div>
 				</div>
 				<!-- end item -->
 			</div>

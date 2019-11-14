@@ -27,7 +27,7 @@
 		<th class="text-nowrap">Код государства ISO 3166-1</th>
 		<th class="text-nowrap">Код государства ISO 3166-1</th>
 		<th class="text-nowrap">Валюта</th>
-		<th class="text-nowrap">Твердая валюта</th>
+		<!--<th class="text-nowrap">Твердая валюта</th>-->
 		<th width="1%" data-orderable="false">Действие</th>
 	</tr>
 </thead>
@@ -41,7 +41,7 @@
 	<td>{{ $value->iso_code_3_state }}</td>
 	<td>{{ $value->iso_code_2_state }}</td>
 	<td>{{ $value->name_currency_en }}</td>
-	<td>{{ $value->solid_currency_id }}</td>
+	<!--<td>{{ $value->solid_currency_id }}</td>-->
 	<td class="with-btn" nowrap="">
 		<a class="btn btn-success" href="{{ route('states.edit',[$value->id]) }}"><i class="fas fa-edit"></i> Редактировать</a>
 		<form onsubmit="if(confirm('Удалить?')){ return true } else { return false }" action="{{ route('states.destroy',[$value->id]) }}" method="post" class="delete-btn" >
