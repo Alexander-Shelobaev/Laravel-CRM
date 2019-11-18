@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace App\Http\Controllers;
 
@@ -16,7 +16,7 @@ use Validator;
 //////////////////////////////////////// Пользовательска часть ////////////////////////////////////////
 class LandingController extends Controller
 {	
-	public function Landing(Request $request){
+	public function landing(Request $request){
 		// Обработчик формы обратной связи
 		if($request->isMethod('post')){
 			// Тексты сообщений при не успешном заполнении формы 
@@ -41,16 +41,15 @@ class LandingController extends Controller
 		return view('/landing/landing', compact('services','portfolios','news'));
 	}
 
-	public function LandingServices($alias){
+	public function landingServices($alias){
 		$service = Service::where('alias','=',$alias)->first();
 		return view('/landing/service', compact('service'));
 	}
 
-	public function LandingNews($alias){
+	public function landingNews($alias){
 		//$news = News::find(1); // поиск по id
 		$news = News::where('alias','=',$alias)->first(); // поиск по alias
 		$date = date('d.m.Y', strtotime($news->created_at));
 		return view('/landing/news', compact('news','date'));
 	}
 }
-?>
