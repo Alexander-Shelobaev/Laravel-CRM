@@ -8,18 +8,26 @@
 				<p>Server Status</p>
 				<div class="pull-left m-b-10 m-t-5">
 					<div class="pull-left p-r-15">
-						<input class="knob" data-width="80" data-height="80" data-thickness=".2" data-readonly="true" data-min="10" data-displayPrevious=true value="44" data-fgColor="#00acac" data-bgColor="#242a30" />
+						<input class="knob" data-width="80" data-height="80" data-thickness=".2" 
+						data-readonly="true" data-min="10" data-displayPrevious=true value="44" 
+						data-fgColor="#00acac" data-bgColor="#242a30" />
 					</div>
 					<div class="pull-left">
-						<input class="knob" data-width="80" data-height="80" data-thickness=".2" data-readonly="true" data-min="10" data-displayPrevious=true value="67" data-fgColor="#348fe2" data-bgColor="#242a30" />
+						<input class="knob" data-width="80" data-height="80" data-thickness=".2" 
+						data-readonly="true" data-min="10" data-displayPrevious=true value="67" 
+						data-fgColor="#348fe2" data-bgColor="#242a30" />
 					</div>
 				</div>
 				<div class="pull-left">
 					<div class="pull-left p-r-15">
-						<input class="knob" data-width="80" data-height="80" data-thickness=".2" data-readonly="true" data-min="10" data-displayPrevious=true value="70" data-fgColor="#ff5b57" data-bgColor="#242a30" />
+						<input class="knob" data-width="80" data-height="80" data-thickness=".2" 
+						data-readonly="true" data-min="10" data-displayPrevious=true value="70" 
+						data-fgColor="#ff5b57" data-bgColor="#242a30" />
 					</div>
 					<div class="pull-left">
-						<input class="knob" data-width="80" data-height="80" data-thickness=".2" data-readonly="true" data-min="10" data-displayPrevious=true value="52" data-fgColor="#727cb6" data-bgColor="#242a30" />
+						<input class="knob" data-width="80" data-height="80" data-thickness=".2" 
+						data-readonly="true" data-min="10" data-displayPrevious=true value="52" 
+						data-fgColor="#727cb6" data-bgColor="#242a30" />
 					</div>
 				</div>
 			</li>
@@ -38,7 +46,8 @@
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+								<a class="accordion-toggle accordion-toggle-styled collapsed" 
+								data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
 									<i class="fa fa-plus-circle pull-right text-success"></i> 
 									Accordion #1
 								</a>
@@ -46,14 +55,16 @@
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse">
 							<div class="panel-body">
-								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+								Anim pariatur cliche reprehenderit, enim eiusmod high 
+								life accusamus terry richardson ad squid.
 							</div>
 						</div>
 					</div>
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+								<a class="accordion-toggle accordion-toggle-styled collapsed" 
+								data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 									<i class="fa fa-plus-circle pull-right text-success"></i> 
 									Accordion #2
 								</a>
@@ -61,14 +72,16 @@
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse">
 							<div class="panel-body">
-								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+								Anim pariatur cliche reprehenderit, enim eiusmod high life 
+								accusamus terry richardson ad squid.
 							</div>
 						</div>
 					</div>
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+								<a class="accordion-toggle accordion-toggle-styled collapsed" 
+								data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
 									<i class="fa fa-plus-circle pull-right text-success"></i> 
 									Accordion #3
 								</a>
@@ -76,7 +89,8 @@
 						</div>
 						<div id="collapseThree" class="panel-collapse collapse">
 							<div class="panel-body">
-								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+								Anim pariatur cliche reprehenderit, enim eiusmod high life 
+								accusamus terry richardson ad squid.
 							</div>
 						</div>
 					</div>

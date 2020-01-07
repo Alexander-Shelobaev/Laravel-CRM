@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Handbook;
 use App\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Gate;
 
 class CitiesController extends Controller
@@ -17,14 +16,14 @@ class CitiesController extends Controller
      */
     public function index()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.cities.index', [
-            'cities' => City::all() // Записывает в cities все записи из БД
+            'cities' => City::all()
         ]);
     }
 
@@ -35,10 +34,10 @@ class CitiesController extends Controller
      */
     public function create()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Add_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Add_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.cities.create', [
@@ -54,13 +53,13 @@ class CitiesController extends Controller
      */
     public function store(Request $request)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Add_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Add_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
-        //dd($request);
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'name_city_en' => ['required', 'string', 'max:255'],
             'name_city_ru' => ['required', 'string', 'max:255'],
@@ -74,7 +73,8 @@ class CitiesController extends Controller
             'iata_code_city' => $request['iata_code_city'],
             'state_id' => $request['state_id'],
         ]);
-        return redirect()->route('cities.index')->with('status','Запись добавлена');
+
+        return redirect()->route('cities.index')->with('status', 'Запись добавлена');
     }
 
     /**
@@ -85,7 +85,7 @@ class CitiesController extends Controller
      */
     public function show(City $city)
     {
-        //
+        
     }
 
     /**
@@ -96,14 +96,14 @@ class CitiesController extends Controller
      */
     public function edit(City $city)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Edit_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Edit_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.cities.edit', [
-            'value' => $city, // Объект записывается в переменную $value, которую мы передаем во view
+            'value' => $city,
         ]);
     }
 
@@ -116,12 +116,13 @@ class CitiesController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Edit_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Edit_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'name_city_en' => ['required', 'string', 'max:255'],
             'name_city_ru' => ['required', 'string', 'max:255'],
@@ -135,7 +136,7 @@ class CitiesController extends Controller
         $city->state_id = $request['state_id'];
         $city->save();
 
-        return redirect()->route('cities.index')->with('status','Запись обновлена');
+        return redirect()->route('cities.index')->with('status', 'Запись обновлена');
     }
 
     /**
@@ -146,13 +147,13 @@ class CitiesController extends Controller
      */
     public function destroy(City $city)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Del_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Del_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         $city->delete();
-        return redirect()->route('cities.index')->with('status','Запись удалена');
+        return redirect()->route('cities.index')->with('status', 'Запись удалена');
     }
 }

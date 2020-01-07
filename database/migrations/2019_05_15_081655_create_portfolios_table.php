@@ -15,10 +15,10 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title',100)->unique();
-            $table->string('short_text',255);
-            $table->string('href',100);
-            $table->string('img',255);
+            $table->string('title', 100)->unique();
+            $table->string('short_text', 255);
+            $table->string('href', 100);
+            $table->string('img', 255);
             $table->timestamps();
         });
     }

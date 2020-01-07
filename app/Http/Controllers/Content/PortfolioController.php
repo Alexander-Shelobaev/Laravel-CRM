@@ -18,10 +18,10 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.content.portfolio.index', [
@@ -36,10 +36,10 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Add_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Add_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.content.portfolio.create', [
@@ -55,12 +55,13 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Add_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Add_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'title'=>'required|max:100',
             'short_text'=>'required|max:255',
@@ -69,16 +70,16 @@ class PortfolioController extends Controller
         ]);
 
         // Обработка и сохранение изображений
-        if($request->hasFile('img')) {
+        if ($request->hasFile('img')) {
             $file = $request->file('img');
             // Обработка изображения с помощью плагина intervention image
-            $str = str_random(80);// генерируем случайное число
-            $str_min = $str.'_announce.jpg';
+            $str = str_random(80);
+            $str_min = $str . '_announce.jpg';
             $img_min = Image::make($file);
-            $img_min->fit(436, 327)->save(public_path().'/assets-landing/img/'.$str_min);
+            $img_min->fit(436, 327)->save(public_path() . '/assets-landing/img/' . $str_min);
             $request['img_name'] = $str_min;
         }
-        //dd($request);
+
         // Сохранение в БД
         Portfolio::create([
             'title' => $request['title'],
@@ -87,7 +88,7 @@ class PortfolioController extends Controller
             'img' => $request['img_name'],
         ]);
 
-        return redirect()->route('portfolios.index')->with('status','Запись добавлена');
+        return redirect()->route('portfolios.index')->with('status', 'Запись добавлена');
     }
 
     /**
@@ -98,7 +99,7 @@ class PortfolioController extends Controller
      */
     public function show(Portfolio $portfolio)
     {
-        //
+        
     }
 
     /**
@@ -109,14 +110,14 @@ class PortfolioController extends Controller
      */
     public function edit(Portfolio $portfolio)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Edit_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Edit_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.content.portfolio.edit', [
-            'value' => $portfolio, // Объект записывается в переменную $value, которую мы передаем во view
+            'value' => $portfolio,
         ]);
     }
 
@@ -129,32 +130,33 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, Portfolio $portfolio)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Edit_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Edit_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
         }
 
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'title'=>'required|max:100',
             'short_text'=>'required|max:255',
-            'href'=>'required|max:100',
-            //'img'=>'required',             
+            'href'=>'required|max:100',            
         ]);
 
         // Обработка и сохранение изображений
-        if($request->hasFile('img')) {
+        if ($request->hasFile('img')) {
             $file = $request->file('img');
             // Обработка изображения с помощью плагина intervention image
-            $str = str_random(80);// генерируем случайное число
-            $str_min = $str.'_announce.jpg';
+            $str = str_random(80);
+            $str_min = $str . '_announce.jpg';
             $img_min = Image::make($file);
-            $img_min->fit(436, 327)->save(public_path().'/assets-landing/img/'.$str_min);
+            $img_min->fit(436, 327)->save(public_path() . '/assets-landing/img/' . $str_min);
             $request['img_name'] = $str_min;
             
-        }else {
+        } else {
             $request['img_name'] = $request['old_picture_announce'];
-        }unset($request['old_picture_announce']);
+        }
+        unset($request['old_picture_announce']);
 
         $portfolio->title = $request['title'];
         $portfolio->short_text = $request['short_text'];
@@ -162,7 +164,7 @@ class PortfolioController extends Controller
         $portfolio->img = $request['img_name'];
         $portfolio->save();
 
-        return redirect()->route('portfolios.index')->with('status','Запись обновлена');
+        return redirect()->route('portfolios.index')->with('status', 'Запись обновлена');
     }
 
     /**
@@ -173,13 +175,13 @@ class PortfolioController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Del_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Del_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         $portfolio->delete();
-        return redirect()->route('portfolios.index')->with('status','Запись удалена');
+        return redirect()->route('portfolios.index')->with('status', 'Запись удалена');
     }
 }

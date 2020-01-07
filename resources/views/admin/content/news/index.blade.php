@@ -42,7 +42,7 @@
 	<td class="with-img picture-announce"><img src="{{ asset('/assets-landing/img/'.$value->detailed_picture) }}" class="img-rounded picture-announce"></td>
 	<td>{{ $value->created_at }}</td>
 	<td class="with-btn" nowrap="">
-		<a class="btn btn-success" href="{{ route('news.edit',$value) }}"><i class="fas fa-edit"></i> Редактировать</a>
+		<a onsubmit="if(confirm('Удалить?')){ return true } else { return false }" class="btn btn-success" href="{{ route('news.edit',$value) }}"><i class="fas fa-edit"></i> Редактировать</a>
 		<form onsubmit="if(confirm('Удалить?')){ return true } else { return false }" action="{{ route('news.destroy',[$value->id]) }}" method="post" class="delete-btn" >
 			{{ method_field('delete') }} 
 			{{ csrf_field() }} 

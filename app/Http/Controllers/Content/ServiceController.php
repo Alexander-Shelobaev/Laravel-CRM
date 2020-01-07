@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Content;
 use App\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Gate;
 
 class ServiceController extends Controller
@@ -17,15 +16,14 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Add_content','Edit_content','Del_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Add_content', 'Edit_content', 'Del_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.content.services.index', [
-            //'users' => User::paginate(10), // Записывает в users первые 10 записей из БД
-            'services' => Service::all() // Записывает в users все записи из БД
+            'services' => Service::all(),
         ]);
     }
 
@@ -36,10 +34,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Add_content','Edit_content','Del_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Add_content', 'Edit_content', 'Del_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.content.services.create', [
@@ -55,12 +53,13 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Add_content','Edit_content','Del_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Add_content', 'Edit_content', 'Del_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'title'=>'required|max:100',
             'alias'=>'required|max:100|unique:services,alias', 
@@ -69,6 +68,7 @@ class ServiceController extends Controller
             'description'=>'required',
             'created_at'=>'required',               
         ]);
+
         Service::create([
             'title' => $request['title'],
             'alias' => $request['alias'],
@@ -77,6 +77,7 @@ class ServiceController extends Controller
             'description' => $request['description'],
             'created_at' => $request['created_at'],
         ]);
+
         return redirect()->route('services.index')->with('status','Запись добавлена');
     }
 
@@ -99,15 +100,14 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Add_content','Edit_content','Del_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Add_content', 'Edit_content', 'Del_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.content.services.edit', [
-            //'user' => $user,
-            'value' => $service, // Объект записывается в переменную $value, которую мы передаем во view
+            'value' => $service,
         ]);
     }
 
@@ -120,12 +120,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Add_content','Edit_content','Del_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Add_content', 'Edit_content', 'Del_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'title'=>'required|max:100',
             'alias'=>'required|max:100|unique:services,alias,'.$service->id,
@@ -143,7 +144,7 @@ class ServiceController extends Controller
         $service->created_at = $request['created_at'];
         $service->save();
 
-        return redirect()->route('services.index')->with('status','Запись обновлена');
+        return redirect()->route('services.index')->with('status', 'Запись обновлена');
     }
 
     
@@ -156,13 +157,13 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_content','Add_content','Edit_content','Del_content']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_content', 'Add_content', 'Edit_content', 'Del_content']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         $service->delete();
-        return redirect()->route('services.index')->with('status','Запись удалена');
+        return redirect()->route('services.index')->with('status', 'Запись удалена');
     }
 }

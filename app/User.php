@@ -37,25 +37,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles(){
-        return $this->belongsToMany('App\Role'); //, 'role_user'
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
     }
-
-    public function chatMessages(){
-        return $this->hasMany('App\Chat', 'recipient_id'); //, ''
-    }
-
-    
-
-    // public function hasPerm($perm_id) {
-    // 	foreach ($this->roles as $role) {
-    // 		foreach ($role->perms as $perm) {
-    // 			if ($perm_id == $perm->id) {
-    // 				return true;
-    // 			}
-    // 		}
-    // 	}
-    // }
-
     
 }

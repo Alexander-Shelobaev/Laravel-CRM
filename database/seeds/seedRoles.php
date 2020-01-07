@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use App\Role;
+
 // php artisan db:seed --class=seedRoles
+
 class seedRoles extends Seeder
 {
     /**

@@ -37,29 +37,29 @@ $cities_arr_en = json_decode($cities_arr_en, true);
 // "code":"NDY","country_code":"GB","latitude":59.25,"longitude":-2.5833,"name_city_en":"Sanday"
 $new_cities_arr_en = array();
 foreach ($cities_arr_en as $key1 => $value1) {
-	foreach ($value1 as $key2 => $value2) {
-		if (gettype($value2) == 'string') {
-			if ($key2 == 'code') {
-				$new_cities_arr_en[$key1]['iata_code_city'] = $value2;
-			}
-			if ($key2 == 'country_code') {
-				$new_cities_arr_en[$key1]['code_state'] = $value2;
-			}
-		}
-		if (gettype($value2) == 'array') {
-			foreach ($value2 as $key3 => $value3) {
-				if ($key3 == 'lat') {
-					$new_cities_arr_en[$key1]['latitude'] = $value3;
-				}
-				if ($key3 == 'lon') {
-					$new_cities_arr_en[$key1]['longitude'] = $value3;
-				}
-				if ($key3 == 'en') {
-					$new_cities_arr_en[$key1]['name_city_en'] = $value3;
-				}
-			}
-		}
-	}
+    foreach ($value1 as $key2 => $value2) {
+        if (gettype($value2) == 'string') {
+            if ($key2 == 'code') {
+                $new_cities_arr_en[$key1]['iata_code_city'] = $value2;
+            }
+            if ($key2 == 'country_code') {
+                $new_cities_arr_en[$key1]['code_state'] = $value2;
+            }
+        }
+        if (gettype($value2) == 'array') {
+            foreach ($value2 as $key3 => $value3) {
+                if ($key3 == 'lat') {
+                    $new_cities_arr_en[$key1]['latitude'] = $value3;
+                }
+                if ($key3 == 'lon') {
+                    $new_cities_arr_en[$key1]['longitude'] = $value3;
+                }
+                if ($key3 == 'en') {
+                    $new_cities_arr_en[$key1]['name_city_en'] = $value3;
+                }
+            }
+        }
+    }
 }
 /*?><?='<pre>';?><? //print_r($new_cities_arr_en);?><?='</pre>';?><?*/
 
@@ -67,17 +67,17 @@ foreach ($cities_arr_en as $key1 => $value1) {
 // Записываем в БД
 $i = 1;
 foreach ($new_cities_arr_en as $value) {
-	$value['latitude'] = $value['latitude'] ?? null;
-	$value['longitude'] = $value['longitude'] ?? null;
-	City::create([
-		'iata_code_city'=>$value['iata_code_city'],
-		'code_state'=>$value['code_state'],
-		'name_city_en'=>$value['name_city_en'],
-		'latitude'=>$value['latitude'],
-		'longitude'=>$value['longitude'],
-	]);
-	echo "Запись №$i в таблицу cities прошла успешно! \n";
-	$i++;
+    $value['latitude'] = $value['latitude'] ?? null;
+    $value['longitude'] = $value['longitude'] ?? null;
+    City::create([
+        'iata_code_city'=>$value['iata_code_city'],
+        'code_state'=>$value['code_state'],
+        'name_city_en'=>$value['name_city_en'],
+        'latitude'=>$value['latitude'],
+        'longitude'=>$value['longitude'],
+    ]);
+    echo "Запись №$i в таблицу cities прошла успешно! \n";
+    $i++;
 }
 
 
@@ -139,29 +139,29 @@ $cities_arr_ru = json_decode($cities_arr_ru, true);
 // "code":"NDY","country_code":"GB","latitude":59.25,"longitude":-2.5833,"name_city_en":"Sanday"
 $new_cities_arr_ru = array();
 foreach ($cities_arr_ru as $key1 => $value1) {
-	foreach ($value1 as $key2 => $value2) {
-		if (gettype($value2) == 'string') {
-			if ($key2 == 'code') {
-				$new_cities_arr_ru[$key1]['iata_code_city'] = $value2;
-			}
-			if ($key2 == 'country_code') {
-				$new_cities_arr_ru[$key1]['code_state'] = $value2;
-			}
-		}
-		if (gettype($value2) == 'array') {
-			foreach ($value2 as $key3 => $value3) {
-				if ($key3 == 'lat') {
-					$new_cities_arr_ru[$key1]['latitude'] = $value3;
-				}
-				if ($key3 == 'lon') {
-					$new_cities_arr_ru[$key1]['longitude'] = $value3;
-				}
-				if ($key3 == 'ru') {
-					$new_cities_arr_ru[$key1]['name_city_ru'] = $value3;
-				}
-			}
-		}
-	}
+    foreach ($value1 as $key2 => $value2) {
+        if (gettype($value2) == 'string') {
+            if ($key2 == 'code') {
+                $new_cities_arr_ru[$key1]['iata_code_city'] = $value2;
+            }
+            if ($key2 == 'country_code') {
+                $new_cities_arr_ru[$key1]['code_state'] = $value2;
+            }
+        }
+        if (gettype($value2) == 'array') {
+            foreach ($value2 as $key3 => $value3) {
+                if ($key3 == 'lat') {
+                    $new_cities_arr_ru[$key1]['latitude'] = $value3;
+                }
+                if ($key3 == 'lon') {
+                    $new_cities_arr_ru[$key1]['longitude'] = $value3;
+                }
+                if ($key3 == 'ru') {
+                    $new_cities_arr_ru[$key1]['name_city_ru'] = $value3;
+                }
+            }
+        }
+    }
 }
 /*?><?='<pre>';?><? //print_r($new_cities_arr_ru);?><?='</pre>';?><?*/
 
@@ -169,9 +169,11 @@ foreach ($cities_arr_ru as $key1 => $value1) {
 // Записываем названия городов на русском языке в БД
 $i = 1;
 foreach ($new_cities_arr_ru as $value) {
-	DB::table('cities')->where('iata_code_city', $value['iata_code_city'])->update(['name_city_ru' => $value['name_city_ru']]); // Записывем в базу данных
-	echo "Обновление записи (названия городов на русском языке) №$i в таблицу Cities прошло успешно! \n";
-	$i++;
+    // Записывем в базу данных
+    DB::table('cities')->where('iata_code_city', $value['iata_code_city'])
+    ->update(['name_city_ru' => $value['name_city_ru']]);
+    echo "Обновление записи (названия городов на русском языке) №$i в таблицу Cities прошло успешно! \n";
+    $i++;
 }
 
 
@@ -181,16 +183,16 @@ $cities = DB::table('cities')->get();
 
 $i = 1;
 foreach ($states as $value1) {
-	foreach ($cities as $value2) {
-
-		if ($value1->iso_code_2_state == $value2->code_state) {
-			DB::table('cities')->where('id', $value2->id)->update(['state_id' => $value1->id]); // Записывем в базу данных
-			echo "Обновление записи (совпадения кода стран у таблицы states и таблицы cities) №$i в таблицу Cities прошло успешно! \n";
-			$i++;
-			break;
-		}
-		
-	}
+    foreach ($cities as $value2) {
+        if ($value1->iso_code_2_state == $value2->code_state) {
+            // Записывем в базу данных
+            DB::table('cities')->where('id', $value2->id)->update(['state_id' => $value1->id]);
+            echo "Обновление записи (совпадения кода стран у таблицы states";
+            echo " и таблицы cities) №$i в таблицу Cities прошло успешно! \n";
+            $i++;
+            break;
+        }
+    }
 }
 
 

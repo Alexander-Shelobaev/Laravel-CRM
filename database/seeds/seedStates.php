@@ -31,7 +31,7 @@ foreach ($states_arr as $value) {
         'iso_code_2_state'=>$value['iso_code_2_state'],
     ]);
     echo "Запись №$i в таблицу states прошла успешно! \n";
-	$i++;
+    $i++;
 }
 echo "Государства добавлены таблицу states успешно!!! \n";
 
@@ -43,21 +43,20 @@ echo "Государства добавлены таблицу states успеш
 
 
 
-
-/**/
 // Связываем валюты и государства использую коды государств 
 $currencies = DB::table('currencies')->get();
 $states = DB::table('states')->get();
 
 // Выявляем совпадения iso state code у таблицы валюты и таблицы государства
 foreach ($currencies as $value1) {
-	foreach ($states as $value2) {
-		if ($value1->iso_code_state == $value2->iso_code_3_state) {
-			//echo $value2->name_state_ru.$value2->id.' = '.$value1->name_currency_ru.$value1->id.'<br>';
-			DB::table('states')->where('id', $value2->id)->update(['currency_id' => $value1->id]); // Записывем в базу данных
-			break;
-		}
-	}
+    foreach ($states as $value2) {
+        if ($value1->iso_code_state == $value2->iso_code_3_state) {
+            //echo $value2->name_state_ru.$value2->id.' = '.$value1->name_currency_ru.$value1->id.'<br>';
+            // Записывем в базу данных
+            DB::table('states')->where('id', $value2->id)->update(['currency_id' => $value1->id]);
+            break;
+        }
+    }
 }
 
 // У части государств отсутствует валюта
@@ -69,8 +68,13 @@ echo "<h3>Список государств у которых отсутству
 
 
 // Связываем валюты и государства использую коды государств 
-$USD = array('MHL','TLS','BES','UMI','FSM','ASM', 'IOT', 'VGB','ECU', 'GUM', 'MNP', 'PLW', 'PRI', 'TCA', 'VIR'); // создаем массив стран использующих доллары
-$EUR = array('ALA', 'FRA', 'GUF', 'GLP', 'GRC', 'MLT', 'MAF', 'SPM', 'AND' ,'AUT','BEL', 'MYT', 'CYP','EST', 'FIN', 'DEU', 'VAT', 'IRL', 'ITA', 'LVA', 'LUX', 'MTQ', 'MCO', 'MNE', 'NLD', 'PRT', 'REU', 'BLM', 'SMR', 'SVK', 'SVN', 'ESP');
+// создаем массив стран использующих доллары
+$USD = array('MHL','TLS','BES','UMI','FSM','ASM', 'IOT', 'VGB','ECU', 'GUM', 'MNP', 'PLW', 'PRI', 'TCA', 'VIR');
+$EUR = array(
+    'ALA', 'FRA', 'GUF', 'GLP', 'GRC', 'MLT', 'MAF', 'SPM', 'AND' ,'AUT','BEL', 'MYT', 'CYP','EST',
+    'FIN', 'DEU', 'VAT', 'IRL', 'ITA', 'LVA', 'LUX', 'MTQ', 'MCO', 'MNE', 'NLD', 'PRT', 'REU', 'BLM',
+    'SMR', 'SVK', 'SVN', 'ESP'
+);
 $XPF = array('PYF', 'NCL', 'WLF');
 $DKK = array('GRL', 'FRO');
 $XCD = array('GRD', 'AIA', 'LCA', 'VCT', 'ATG', 'DMA', 'MSR', 'KNA');
@@ -88,126 +92,163 @@ $ANG = array('CUW', 'SXM');
 
 foreach ($states_with_null as $value1) {
 
-	foreach ($USD as $value2) {// перебор массива USD
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'USD')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($EUR as $value2) {// перебор массива EUR
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'EUR')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($XPF as $value2) {// перебор массива XPF
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'XPF')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($DKK as $value2) {// перебор массива DKK
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'DKK')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($XCD as $value2) {// перебор массива XCD
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'XCD')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($XOF as $value2) {// перебор массива XOF
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'XOF')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($GBP as $value2) {// перебор массива GBP
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'GBP')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($XAF as $value2) {// перебор массива XAF
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'XAF')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($AUD as $value2) {// перебор массива AUD
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'AUD')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($NZD as $value2) {// перебор массива NZD
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'NZD')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($ILS as $value2) {// перебор массива ILS
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'ILS')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($CHF as $value2) {// перебор массива CHF
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'CHF')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
-	foreach ($ANG as $value2) {// перебор массива ANG
-		if ($value1->iso_code_3_state == $value2) {
-			$currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'ANG')->get();
-			foreach ($currencies_code as $value3) {
-				DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)->update(['currency_id' => $value3->id]); // Записывем в базу данных
-			}
-		}
-	}
+    // перебор массива USD
+    foreach ($USD as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'USD')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива EUR
+    foreach ($EUR as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'EUR')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива XPF
+    foreach ($XPF as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'XPF')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива DKK
+    foreach ($DKK as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'DKK')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива XCD
+    foreach ($XCD as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'XCD')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива XOF
+    foreach ($XOF as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'XOF')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива GBP
+    foreach ($GBP as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'GBP')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива XAF
+    foreach ($XAF as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'XAF')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива AUD
+    foreach ($AUD as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'AUD')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива NZD
+    foreach ($NZD as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'NZD')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива ILS
+    foreach ($ILS as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'ILS')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива CHF
+    foreach ($CHF as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'CHF')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
+
+    // перебор массива ANG
+    foreach ($ANG as $value2) {
+        if ($value1->iso_code_3_state == $value2) {
+            $currencies_code = DB::table('currencies')->where('iso_4217_code_currency_literal', '=', 'ANG')->get();
+            foreach ($currencies_code as $value3) {
+                // Записывем в базу данных
+                DB::table('states')->where('iso_code_3_state', $value1->iso_code_3_state)
+                ->update(['currency_id' => $value3->id]);
+            }
+        }
+    }
 
 }
 
-
-/*$states_with_null = DB::table('states')->where('currency_id', '=', NULL)->get();
-echo "<h3>Список №2 государств у которых отсутствует валюта</h3>\n";
-?><?='<pre>';?><? print_r($states_with_null);?><?='</pre>';?><?
-*/
-
-
-
-
-
-
-
     }
-
- 
 }

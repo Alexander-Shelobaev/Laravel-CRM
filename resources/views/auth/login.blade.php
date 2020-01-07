@@ -4,20 +4,7 @@
 @section('description', '')
 
 @section('content')
-<style type="text/css">
-	.checkbox.checkbox-css label {
-		cursor: pointer;
-	}
-	.login a {
-		color: #fff;
-		cursor: pointer;
-		text-decoration: none;
-	}
-	.login a:hover {
-		color: #fff;
-		text-decoration: underline;
-	}
-</style>
+
 @guest
 <div class="login bg-black animated fadeInDown">
 	<!-- begin brand -->

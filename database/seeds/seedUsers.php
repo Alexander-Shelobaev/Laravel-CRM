@@ -20,4 +20,3 @@ class seedUsers extends Seeder
         User::create(['name'=>"Sarah",'email'=>'Sarah@gmail.com','password'=> bcrypt(12345678),'avatar'=>'user-18.jpg']);
     }
 }
-

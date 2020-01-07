@@ -15,8 +15,6 @@ class ChangeRoleUserTable extends Migration
     {
         Schema::table('role_user', function (Blueprint $table) {
 
-            
-
             $table->bigInteger('role_id')->unsigned()->after('id');
             $table->foreign('role_id')->references('id')->on('roles');
 

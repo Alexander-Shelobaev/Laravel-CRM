@@ -12,62 +12,62 @@
 */
 
 
-//////////////////////////////////////// Пользовательска часть ////////////////////////////////////////
 
-// Роуты для пользовательской (Landing), по умолчанию используют 'middleware'=>'web'
-Route::group([],function() {
+/**
+ * Роуты для страниц регистрации, авторизации, восстановления пароля
+ */
+Auth::routes();
+
+
+
+/**
+ * Пользовательска часть
+ */
+Route::group([], function () {
     // Роут для главной страницы (/)
-	Route::match(['get','post'],'/',['uses'=>'LandingController@landing','as'=>'landingHome']);
-    // Роуты для вывода сервисов (/service/text)
-	//Route::get('/service/{alias}',['uses'=>'LandingController@landingServices','as'=>'service']);
+    Route::match(['get','post'], '/', ['uses'=>'LandingController@landing','as'=>'landingHome']);
     // Роуты для вывода новостей (/service/text)
-	Route::get('/news/{alias}',['uses'=>'LandingController@landingNews','as'=>'news']);
+    Route::get('/news/{alias}', ['uses'=>'LandingController@landingNews','as'=>'news']);
 });
 
 
 
+/**
+ * Административная часть
+ */
+Route::group(['middleware'=>['web']], function () {
 
-//////////////////////////////////////// Административная часть ////////////////////////////////////////
-
-// Роуты для страниц регистрации, авторизации, восстановления пароля
-Auth::routes();
-
-Route::group(['middleware'=>['web']], function() {
-
-    // После успешно авторизации происходит переход на /home, контролер выполняет redirect('/admin')
+    // После успешно авторизации происходит переход на /home
     Route::get('/home', 'AdminController@index')->name('home');
+    Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function () {
 
-    Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function() {
-
-        Route::get('/',['uses'=>'AdminController@admin','as'=>'admin']);
-
-        Route::resource('/chat','ChatController');
-        //Route::resource('/chat',['uses'=>'ChatResourceController','as'=>'chat']);
-
+        Route::get('/', ['uses'=>'AdminController@admin','as'=>'admin']);
         // Роут для управления пользователями
-        Route::group(['prefix'=>'user-management','namespace'=>'Users'],function() {
-            Route::resource('/users','UserController');
-            Route::resource('/roles','RoleController');
-            Route::resource('/permissions','PermissionController');
+        Route::group(['prefix'=>'user-management','namespace'=>'Users'], function () {
+            Route::resource('/users', 'UserController');
+            Route::resource('/roles', 'RoleController');
+            Route::resource('/permissions', 'PermissionController');
         });
-
         // Роут для контента
-        Route::group(['prefix'=>'content','namespace'=>'Content'],function() {
-            Route::resource('/services','ServiceController');
-            Route::resource('/portfolios','PortfolioController');
-            Route::resource('/news','NewsController');
+        Route::group(['prefix'=>'content','namespace'=>'Content'], function () {
+            Route::resource('/services', 'ServiceController');
+            Route::resource('/portfolios', 'PortfolioController');
+            Route::resource('/news', 'NewsController');
         });
-
         // Роут для справочников
-        Route::group(['prefix'=>'handbook','namespace'=>'Handbook'],function() {
-            Route::resource('/currencies','CurrenciesController');
-            Route::resource('/states','StatesController');
-            Route::resource('/cities','CitiesController');
-            Route::resource('/airfields','AirfieldsController');
+        Route::group(['prefix'=>'handbook','namespace'=>'Handbook'], function () {
+            Route::resource('/currencies', 'CurrenciesController');
+            Route::resource('/states', 'StatesController');
+            Route::resource('/cities', 'CitiesController');
+            Route::resource('/airfields', 'AirfieldsController');
         });
 
-        Route::get('app-desc', function () {return view('admin.app-desc');});
-        Route::get('feedback-form', function () {return view('admin.feedback-form');});
+        Route::get('app-desc', function () {
+            return view('admin.app-desc');
+        });
+        Route::get('feedback-form', function () {
+            return view('admin.feedback-form');
+        });
 
     });
 

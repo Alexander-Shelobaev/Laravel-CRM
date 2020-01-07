@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use App\Permission;
+
 // php artisan db:seed --class=seedPermissions
+
 class seedPermissions extends Seeder
 {
     /**

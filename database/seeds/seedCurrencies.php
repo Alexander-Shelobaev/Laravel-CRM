@@ -23,18 +23,19 @@ $currencies_arr = json_decode($currencies_json, true);
 /**/
 $i = 1;
 foreach ($currencies_arr as $value) {
-	Currency::create([
-		'name_currency_en'=>$value['name_currency_en'],
-		'name_currency_ru'=>$value['name_currency_ru'],
-		'iso_4217_code_currency_literal'=>$value['iso_4217_code_currency_literal'],
-		'iso_4217_code_currency_numeric'=>$value['iso_4217_code_currency_numeric'],
-		'rounding_currency'=>$value['rounding_currency'],
-		'method_rounding_currency'=>$value['method_rounding_currency'],
-		'unicode'=>$value['unicode'],
-		'iso_code_state'=>$value['iso_code_state'],
-		'iso_numeric_state'=>$value['iso_numeric_state']
-	]);
-    echo "Запись №$i в таблицу currencies прошла успешно! \n"; // Выводит в консоль записи о добавление в БД
+    Currency::create([
+        'name_currency_en'=>$value['name_currency_en'],
+        'name_currency_ru'=>$value['name_currency_ru'],
+        'iso_4217_code_currency_literal'=>$value['iso_4217_code_currency_literal'],
+        'iso_4217_code_currency_numeric'=>$value['iso_4217_code_currency_numeric'],
+        'rounding_currency'=>$value['rounding_currency'],
+        'method_rounding_currency'=>$value['method_rounding_currency'],
+        'unicode'=>$value['unicode'],
+        'iso_code_state'=>$value['iso_code_state'],
+        'iso_numeric_state'=>$value['iso_numeric_state']
+    ]);
+    // Выводит в консоль записи о добавление в БД
+    echo "Запись №$i в таблицу currencies прошла успешно! \n";
     $i++;
 }
 echo "Валюты добавлены таблицу currencies успешно!!! \n";
@@ -42,4 +43,3 @@ echo "Валюты добавлены таблицу currencies успешно!!
 
     }
 }
-

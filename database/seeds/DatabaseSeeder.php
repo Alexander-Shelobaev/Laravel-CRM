@@ -11,18 +11,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $start = microtime(true);    	
+        $start = microtime(true);       
 
         $this->call(seedService::class);
-    	$this->call(seedPortfolio::class);
-    	$this->call(seedNews::class);
+        $this->call(seedPortfolio::class);
+        $this->call(seedNews::class);
 
-    	$this->call(seedCurrencies::class);
-    	$this->call(seedStates::class);
+        $this->call(seedCurrencies::class);
+        $this->call(seedStates::class);
         $this->call(seedCities::class);
         $this->call(seedAirfields::class);
         
-    	$this->call(seedUsers::class);
+        $this->call(seedUsers::class);
         $this->call(seedRoles::class);
         $this->call(seedPermissions::class);
         $this->call(seedPermissionRole::class);

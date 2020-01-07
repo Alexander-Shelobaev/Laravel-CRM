@@ -150,7 +150,7 @@ function bs_input_file_avatar() {
 	);
 }
 $(function() {
-		bs_input_file_avatar();
+	bs_input_file_avatar();
 });
 </script>
 @endpush

@@ -85,24 +85,11 @@
 				foreach (config('sidebar.menu') as $key => $menu) {
 					$GLOBALS['parent_active'] = '';
 
-					// изменяем $currentUrl, если состоит более чем из 3 секций, например /admin/users/users/2/edit превращаем в /admin/users/users
+					// изменяем $currentUrl, если состоит более чем из 3 секций, 
+					// например /admin/users/users/2/edit превращаем в /admin/users/users
 					if(preg_match ('/\/[\w|-]+\/[\w|-]+\/[\w|-]+/', $currentUrl, $matches))$currentUrl = $matches[0];
 
 					if(mb_strpos($currentUrl, 'admin/chat')){$currentUrl = '/admin/chat';} 
-
- 					// if(mb_strpos($currentUrl, 'admin/user-management/users')){$currentUrl = '/admin/user-management/users';} 
-					// if(mb_strpos($currentUrl, 'admin/user-management/roles')){$currentUrl = '/admin/user-management/roles';} 
-					// if(mb_strpos($currentUrl, 'admin/user-management/permissions')){$currentUrl = '/admin/user-management/permissions';} 
-
-					// if(mb_strpos($currentUrl, 'admin/content/services')){$currentUrl = '/admin/content/services';} // меняем URI при редактировании материала
-					// if(mb_strpos($currentUrl, 'admin/content/portfolios')){$currentUrl = '/admin/content/portfolios';} // меняем URI при редактировании материала
-					// if(mb_strpos($currentUrl, 'admin/content/news')){$currentUrl = '/admin/content/news';} // меняем URI при редактировании материала
-
-					// if(mb_strpos($currentUrl, 'admin/handbook/currencies')){$currentUrl = '/admin/handbook/currencies';} 
-					// if(mb_strpos($currentUrl, 'admin/handbook/states')){$currentUrl = '/admin/handbook/states';} 
-					// if(mb_strpos($currentUrl, 'admin/handbook/cities')){$currentUrl = '/admin/handbook/cities';} 
-					// if(mb_strpos($currentUrl, 'admin/handbook/airfields')){$currentUrl = '/admin/handbook/airfields';}
-
 
 					$hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';
 					$hasCaret = (!empty($menu['caret'])) ? '<b class="caret"></b>' : '';
@@ -136,7 +123,11 @@
 				}
 			@endphp
 			<!-- begin sidebar minify button -->
-			<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+			<li>
+				<a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify">
+					<i class="fa fa-angle-double-left"></i>
+				</a>
+			</li>
 			<!-- end sidebar minify button -->
 		</ul>
 		<!-- end sidebar nav -->
@@ -145,4 +136,3 @@
 </div>
 <div class="sidebar-bg"></div>
 <!-- end #sidebar -->
-

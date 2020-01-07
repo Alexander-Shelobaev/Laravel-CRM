@@ -6,7 +6,6 @@ use App\State;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
 use Gate;
 
 class StatesController extends Controller
@@ -18,23 +17,25 @@ class StatesController extends Controller
      */
     public function index()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.states.index', [
-            //'states' => State::all(), // Записывает в states все записи из БД
-            //'currencies' => State::find(10)->currencies, // Записывает в states все записи из 
-            //'currencies' => State::with('currency')->where('id', '1')->get(),
             'states' => DB::table('states')
-            ->join('currencies', 'states.currency_id', '=', 'currencies.id')
-            ->select('states.id','states.name_state_en', 'states.name_state_ru', 'states.iso_code_3_state', 'states.iso_code_2_state', 'currencies.name_currency_en', 'states.solid_currency_id')
-            ->get(),
-
-            //$phone = User::find(1)->phone
-            // $states = DB::table('states')->get()
+                ->join('currencies', 'states.currency_id', '=', 'currencies.id')
+                ->select(
+                    'states.id',
+                    'states.name_state_en',
+                    'states.name_state_ru',
+                    'states.iso_code_3_state',
+                    'states.iso_code_2_state',
+                    'currencies.name_currency_en',
+                    'states.solid_currency_id'
+                )
+                ->get(),
         ]);
     }
 
@@ -45,10 +46,10 @@ class StatesController extends Controller
      */
     public function create()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Add_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Add_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.states.create', [
@@ -64,12 +65,13 @@ class StatesController extends Controller
      */
     public function store(Request $request)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Add_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Add_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'name_state_en' => ['required', 'string', 'max:255'],
             'name_state_ru' => ['required', 'string', 'max:255'],
@@ -87,7 +89,7 @@ class StatesController extends Controller
             'currency_id' => $request['currency_id'],
             'solid_currency_id' => $request['solid_currency_id'],
         ]);
-        return redirect()->route('states.index')->with('status','Запись добавлена');
+        return redirect()->route('states.index')->with('status', 'Запись добавлена');
     }
 
     /**
@@ -98,7 +100,7 @@ class StatesController extends Controller
      */
     public function show(State $state)
     {
-        //
+        
     }
 
     /**
@@ -109,14 +111,14 @@ class StatesController extends Controller
      */
     public function edit(State $state)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Edit_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Edit_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.states.edit', [
-            'value' => $state, // Объект записывается в переменную $value, которую мы передаем во view
+            'value' => $state,
         ]);
     }
 
@@ -129,12 +131,13 @@ class StatesController extends Controller
      */
     public function update(Request $request, State $state)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Edit_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook','Edit_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'name_state_en' => ['required', 'string', 'max:255'],
             'name_state_ru' => ['required', 'string', 'max:255'],
@@ -150,10 +153,9 @@ class StatesController extends Controller
         $state->iso_code_2_state = $request['iso_code_2_state'];
         $state->currency_id = $request['currency_id'];
         $state->solid_currency_id = $request['solid_currency_id'];
-
         $state->save();
 
-        return redirect()->route('states.index')->with('status','Запись обновлена');
+        return redirect()->route('states.index')->with('status', 'Запись обновлена');
     }
 
     /**
@@ -164,13 +166,13 @@ class StatesController extends Controller
      */
     public function destroy(State $state)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
-        $code_access = serialize(['View_admin','View_handbook','Del_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        $code_access = serialize(['View_admin', 'View_handbook', 'Del_handbook']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         $state->delete();
-        return redirect()->route('states.index')->with('status','Запись удалена');
+        return redirect()->route('states.index')->with('status', 'Запись удалена');
     }
 }

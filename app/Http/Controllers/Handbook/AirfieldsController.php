@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Handbook;
 use App\Airfield;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Gate;
 
 class AirfieldsController extends Controller
@@ -17,14 +16,14 @@ class AirfieldsController extends Controller
      */
     public function index()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
         $code_access = serialize(['View_admin','View_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.airfields.index', [
-            'airfields' => Airfield::all() // Записывает в airfields все записи из БД
+            'airfields' => Airfield::all()
         ]);
     }
 
@@ -35,10 +34,10 @@ class AirfieldsController extends Controller
      */
     public function create()
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
         $code_access = serialize(['View_admin','View_handbook','Add_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.airfields.create', [
@@ -54,21 +53,20 @@ class AirfieldsController extends Controller
      */
     public function store(Request $request)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
         $code_access = serialize(['View_admin','View_handbook','Add_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
-        //dd($request);
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'name_airfield_en' => ['required', 'string', 'max:255'],
             'name_airfield_ru' => ['nullable', 'string', 'max:255'],
             'iata_code_airfield' => ['required', 'string', 'max:4'],
-
             'latitude' => ['nullable', 'string', 'max:16'],
             'longitude' => ['nullable', 'string', 'max:16'],
-            'time_zone' => ['nullable', 'string', 'max:16'], 
+            'time_zone' => ['nullable', 'string', 'max:16'],
             'city_id' => ['nullable','integer', 'max:999'],
         ]);
 
@@ -76,13 +74,13 @@ class AirfieldsController extends Controller
             'name_airfield_en' => $request['name_airfield_en'],
             'name_airfield_ru' => $request['name_airfield_ru'],
             'iata_code_airfield' => $request['iata_code_airfield'],
-
             'latitude' => $request['latitude'],
             'longitude' => $request['longitude'],
             'time_zone' => $request['time_zone'],
             'city_id' => $request['city_id'],
         ]);
-        return redirect()->route('airfields.index')->with('status','Запись добавлена');
+
+        return redirect()->route('airfields.index')->with('status', 'Запись добавлена');
     }
 
     /**
@@ -93,7 +91,7 @@ class AirfieldsController extends Controller
      */
     public function show(Airfield $airfield)
     {
-        //
+        
     }
 
     /**
@@ -104,14 +102,14 @@ class AirfieldsController extends Controller
      */
     public function edit(Airfield $airfield)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
         $code_access = serialize(['View_admin','View_handbook','Edit_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         return view('admin.handbook.airfields.edit', [
-            'value' => $airfield, // Объект записывается в переменную $value, которую мы передаем во view
+            'value' => $airfield,
         ]);
     }
 
@@ -124,17 +122,17 @@ class AirfieldsController extends Controller
      */
     public function update(Request $request, Airfield $airfield)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
         $code_access = serialize(['View_admin','View_handbook','Edit_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
+        // Выполняем проверку данных полученных из $request
         $validator = $request->validate([
             'name_airfield_en' => ['required', 'string', 'max:255'],
             'name_airfield_ru' => ['nullable', 'string', 'max:255'],
             'iata_code_airfield' => ['required', 'string', 'max:4'],
-
             'latitude' => ['nullable', 'string', 'max:16'],
             'longitude' => ['nullable', 'string', 'max:16'],
             'time_zone' => ['nullable', 'string', 'max:16'], 
@@ -150,7 +148,7 @@ class AirfieldsController extends Controller
         $airfield->city_id = $request['city_id'];
         $airfield->save();
 
-        return redirect()->route('airfields.index')->with('status','Запись обновлена');
+        return redirect()->route('airfields.index')->with('status', 'Запись обновлена');
     }
 
     /**
@@ -161,13 +159,13 @@ class AirfieldsController extends Controller
      */
     public function destroy(Airfield $airfield)
     {
-        // Проверка права пользователя на доступ к разделу. Первый аргумент это название действия, второй название/я доступа/ов которое мы передаем в AuthServiceProvider
         $code_access = serialize(['View_admin','View_handbook','Del_handbook']);
-        if (Gate::denies('Access_check',$code_access)) { // метод denies() возвращает true, если пользователю запрещено действие указанное в скобках
-            return redirect('/admin/content/services')->with(['status-error'=>'У вас нет на это прав, обратитесь к администратору.']);
+        if (Gate::denies('Access_check', $code_access)) {
+            return redirect('/admin/content/services')
+            ->with(['status-error' => 'У вас нет на это прав, обратитесь к администратору.']);
         }
 
         $airfield->delete();
-        return redirect()->route('airfields.index')->with('status','Запись удалена');
+        return redirect()->route('airfields.index')->with('status', 'Запись удалена');
     }
 }
