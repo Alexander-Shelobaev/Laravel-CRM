@@ -115,7 +115,7 @@
                     placeholder='Выберите файл' /><!--required-->
                     <div class="input-group-append">
                         <button type="button" class="btn btn-success btn-choose-picture-announce">Выбрать</button>
-                    </div>	
+                    </div>  
                     @if ($errors->has('avatar'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('avatar') }}</strong>
